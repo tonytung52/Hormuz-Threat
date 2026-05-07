@@ -1,0 +1,199 @@
+# Hormuz-Threat
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 軍事應用：荷姆茲海峽掃雷作戰系統</title>
+    <style>
+        :root {
+            --bg-color: #001220;
+            --primary-yellow: #FFD700;
+            --accent-white: #FFFFFF;
+            --card-bg: #002244;
+            --glow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--accent-white);
+            font-family: 'Segoe UI', Microsoft JhengHei, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-yellow);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        h1 {
+            color: var(--primary-yellow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .stage-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--primary-yellow);
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+        }
+
+        .stage-card h3 {
+            color: var(--primary-yellow);
+            margin-top: 0;
+        }
+
+        .stage-card p {
+            font-size: 0.9em;
+            line-height: 1.6;
+            display: none; /* 初始隱藏，由 JS 控制 */
+        }
+
+        .stage-card.active p {
+            display: block;
+        }
+
+        .badge {
+            background-color: var(--primary-yellow);
+            color: var(--bg-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .ai-feature {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #003366, #001220);
+            border-left: 5px solid var(--primary-yellow);
+            width: 90%;
+        }
+
+        .ai-feature h2 {
+            color: var(--primary-yellow);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #888;
+            text-align: center;
+        }
+
+        /* 動畫效果 */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .live-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #ff3333;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><span class="live-dot"></span>Hormuz Mine Countermeasures (MCM) Dashboard</h1>
+    <p>AI 聲納掃雷作戰流程與自動化技術展示</p>
+</header>
+
+<div class="container">
+    <!-- Stage 1 -->
+    <div class="stage-card" onclick="toggleStage(this)">
+        <div class="badge">STAGE 01</div>
+        <h3>情資偵蒐與預警</h3>
+        <p>利用衛星與 P-8A 偵察機進行多頻譜感測，結合 AI 大數據分析伊朗佈雷艦的行動軌跡，預判水雷密集區域。這能減少美軍官兵盲目搜索的風險。</p>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="stage-card" onclick="toggleStage(this)">
+        <div class="badge">STAGE 02</div>
+        <h3>無人艦廣域掃描</h3>
+        <p>部署 USV（無人水面艦）搭載合成孔徑聲納（SAS）。AI 即時處理回波影像，能排除海床雜訊（如廢棄輪胎、珊瑚礁），將「漏失機率」降至最低。</p>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="stage-card" onclick="toggleStage(this)">
+        <div class="badge">STAGE 03</div>
+        <h3>AI 目標分類識別</h3>
+        <p>UUV 偵測到物體後，ATR（自動目標辨識）系統會分析其聲學簽名（Acoustic Signature）。AI 能分辨出這是一枚伊朗 M-08 水雷還是沈船殘骸，大幅降低「誤判率」。</p>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="stage-card" onclick="toggleStage(this)">
+        <div class="badge) ">STAGE 04</div>
+        <h3>自動化威脅中和</h3>
+        <p>派出 Barracuda 滅雷機器人。透過 AI 影像導引，在混濁的海水中精準定位水雷引信部位進行爆破，將人員受傷風險降為零。</p>
+    </div>
+
+    <!-- Stage 5 -->
+    <div class="stage-card" onclick="toggleStage(this)">
+        <div class="badge">STAGE 05</div>
+        <h3>安全航道確認</h3>
+        <p>最後進行二次掃描。AI 演算法比對爆破前後地形，確認航道淨空後發布「Safe to Transit」指令，如期破除海峽封鎖威脅。</p>
+    </div>
+</div>
+
+<div class="ai-feature">
+    <h2>AI 聲納如何守護官兵安全？</h2>
+    <ul>
+        <li><strong>自動化降噪：</strong> AI 深度學習模型能從渾濁海水的複雜雜訊中提煉出金屬特徵。</li>
+        <li><strong>精準定位：</strong> 透過多台無人機（Drone Swarm）協作，建立三維水下威脅地圖。</li>
+        <li><strong>預防誤傷：</strong> 機器代替潛水員執行高危險的「水雷識別」與「裝藥爆破」任務。</li>
+    </ul>
+</div>
+
+<footer>
+    © 2026 現代軍事 AI 應用專案 - 荷姆茲海峽安全行動
+</footer>
+
+<script>
+    function toggleStage(element) {
+        // 切換顯示/隱藏內容
+        element.classList.toggle('active');
+        
+        // 簡單的點擊互動反饋
+        if(element.classList.contains('active')) {
+            console.log("正在載入該階段詳細 AI 參數...");
+        }
+    }
+</script>
+
+</body>
+</html>
